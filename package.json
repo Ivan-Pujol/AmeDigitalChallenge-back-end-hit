@@ -4,7 +4,7 @@
   "description": "Este repositório é apenas para treino. Não sigo tudo o que é pedido no challenge por conta disso.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
