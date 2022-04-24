@@ -1,6 +1,6 @@
 //import routes from "../routes/routes";
 const routes = require('../Routes/routes.js');
-const planetModel = require('../Mockups/planetModel.js');
+const planetModel = require('../Models/planetModel.js');
 
 // async function getAllPlanets(req, res) {
 //   try {
