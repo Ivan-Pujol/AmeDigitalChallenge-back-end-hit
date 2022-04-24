@@ -1,12 +1,14 @@
 const express = require('express');
+const cors = require('cors');
 const server = express();
+server.use(express.json());
+server.use(cors());
 require('dotenv').config();
 const port = process.env.PORT;
 
-server.use(express.json());
 
-server.get('/teste', (req, res) =>{
-    return res.json({message: 'You are now in the API root'});
+server.get('/', (req, res) =>{
+    res.send({message: 'You are now in the API root from AmeChallengeBackEnd'});
 })
 
 server.listen(port, ()=>{
