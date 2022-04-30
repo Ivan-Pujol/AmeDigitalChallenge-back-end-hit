@@ -114,4 +114,38 @@ async function getPlanetById(req, res) {
         .send({error: `Un error ocurred looking for the planet:   ${err.message}`});       
     }    
   };
-module.exports = {getAllPlanets, getPlanetById, getPlanetByName, getPlanetByTerrain, getPlanetByClimate};
+
+  async function includePlanet(req, res) {
+    try {     
+      const {planet_name, planet_climate, planet_terrain} = req.body;  
+      await pool.connect();
+      const planets = await pool.query((`INSERT INTO planets(planet_name, planet_climate, planet_terrain) VALUES($1, $2, $3)`),[planet_name,planet_climate,planet_terrain]);
+      if (planets.rowCount === 0) {
+        res.status(404).send({ message: `It wasn't possible to include the planet`});
+        return;        
+      };
+      const result = await pool.query('SELECT * FROM planets WHERE planet_name = '+`'${planet_name}'`); 
+     res.send(result.rows);
+    } catch (err) {
+      res
+        .status(500)
+        .send({error: `Un error ocurred saving the planet:   ${err.message}`});       
+    }    
+  };
+  async function removeById(req, res) {
+    try {     
+      const {cod}  = req.params;
+      await pool.connect();
+      const planets = await pool.query(`DELETE FROM planets WHERE planet_id = '${cod}'`);
+      if (planets.rowCount === 0) {
+        res.status(404).send({ message: 'No planet was found'});
+        return;        
+      }  
+     res.send(planets.rows);
+    } catch (err) {
+      res
+        .status(500)
+        .send({error: `Un error ocurred looking for the planet:   ${err.message}`});       
+    }    
+  };  
+module.exports = {getAllPlanets, getPlanetById, getPlanetByName, getPlanetByTerrain, getPlanetByClimate, includePlanet, removeById};

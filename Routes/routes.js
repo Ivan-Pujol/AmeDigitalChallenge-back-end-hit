@@ -9,5 +9,7 @@ const app = express();
  app.get('/name/:name', controller.getPlanetByName);
  app.get('/terrain/:terrain', controller.getPlanetByTerrain);
  app.get('/climate/:climate', controller.getPlanetByClimate);
+ app.post('/include', controller.includePlanet);
+ app.delete('/delete/:cod', controller.removeById);
 
 module.exports = app;
