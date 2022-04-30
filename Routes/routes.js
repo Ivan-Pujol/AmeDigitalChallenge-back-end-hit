@@ -4,12 +4,10 @@ const controller = require('../Controllers/controller');
 const app = express();
 
 
-// app.get('/getall', transactController.getAllTransactions);
-// app.get('/gettransactions/:period', transactController.getYearMonth);
-// app.get('/balance/:period', transactController.balanceYearMonth);
-// app.get('/filter', transactController.filteredExpenses);
-// app.post('/include', transactController.includeTransaction);
-// app.put('/edit', transactController.editTransaction);
-// app.delete('/delete', transactController.deleteTransaction);
-// app.get('/find/:id', transactController.findTransactionById);
-// module.exports = app;
+ app.get('/getall', controller.getAllPlanets);
+ app.get('/id/:cod', controller.getPlanetById);
+ app.get('/name/:name', controller.getPlanetByName);
+ app.get('/terrain/:terrain', controller.getPlanetByTerrain);
+ app.get('/climate/:climate', controller.getPlanetByClimate);
+
+module.exports = app;
