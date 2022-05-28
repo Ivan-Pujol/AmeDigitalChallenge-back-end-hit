@@ -11,15 +11,10 @@ require('dotenv').config();
 const port = process.env.PORT;  
 const dbClient = new Client(config);
 
-
-
-server.get('/planets', (req, res) =>{
-    res.send({message: 'You are now in the API root from AmeChallengeBackEnd'});
-})
-async function initConnection(){
-    await dbClient.connect();
-    console.log("Conectou?")
-}
+// async function initConnection(){
+//     await dbClient.connect();
+//     console.log("Conectou?")
+// }
 server.listen(port, ()=>{
     console.log(`Wellcome your server is up!, Listening on port: ${port}`);
     

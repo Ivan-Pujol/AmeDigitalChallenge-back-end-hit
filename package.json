@@ -18,7 +18,10 @@
   "homepage": "https://github.com/Ivan-Pujol/ChallengeBackEndAmeDigital#readme",
   "devDependencies": {
     "dotenv": "^16.0.0",
-    "nodemon": "^2.0.15"
+    "jest": "^28.0.3",
+    "nodemon": "^2.0.15",
+    "sucrase": "^3.21.0",
+    "supertest": "^6.2.3"
   },
   "dependencies": {
     "axios": "^0.26.1",

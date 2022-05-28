@@ -16,7 +16,9 @@ const axios  = require('axios');
 
 // }
 
-
+async function wellcome(req, res){
+  res.send({message: 'You are now in the API root from AmeChallengeBackEnd'});
+};
 
 async function getAllPlanets(req, res) {
   try {
@@ -24,18 +26,15 @@ async function getAllPlanets(req, res) {
     const planets = await pool.query('SELECT * FROM planets');
     if (planets.length < 1) {
       res.status(404).send({ message: 'No planet was found'});
-    //   await pool.end();
       return;
-    }
-    res.send(planets.rows);
-    //  await pool.end();
+    }    
+    res.send(planets.rows);    
   } catch (err) {
     res
       .status(500)
       .send(err.message);
-    //  await pool.end();
-  }
-  
+    }
+  //pool.end();  
 };
 async function getPlanetById(req, res) {
     try {     
@@ -148,4 +147,4 @@ async function getPlanetById(req, res) {
         .send({error: `Un error ocurred looking for the planet:   ${err.message}`});       
     }    
   };  
-module.exports = {getAllPlanets, getPlanetById, getPlanetByName, getPlanetByTerrain, getPlanetByClimate, includePlanet, removeById};
+module.exports = {getAllPlanets, getPlanetById, getPlanetByName, getPlanetByTerrain, getPlanetByClimate, includePlanet, removeById, wellcome};
